@@ -10,6 +10,7 @@ writing OFX data to a file.
 
 Use the wrapper in the following way:
 
+```clojure
 (ns mypackage.core
   (require '[ofx-clj.core :as ofx]))
 
@@ -18,6 +19,7 @@ Use the wrapper in the following way:
 
 ; get all the banking messages from the map
 (ofx/find-all-transactions data "banking")
+```
 
 Two sample OFX files are included in the "resources" directory.
 
