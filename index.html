@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Ofx-clj : A Clojure wrapper for the OFX4J library for parsing OFX documents." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ofx-clj</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/hrathod/ofx-clj">View on GitHub</a>
+
+          <h1 id="project_title">Ofx-clj</h1>
+          <h2 id="project_tagline">A Clojure wrapper for the OFX4J library for parsing OFX documents.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/hrathod/ofx-clj/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/hrathod/ofx-clj/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>ofx-clj</h1>
+
+<p>A Clojure wrapper for the OFX4J library for parsing OFX documents.</p>
+
+<h2>Usage</h2>
+
+<p>The wrapper exposes two functions to fetch the data from
+an OFX file.  There is currently no functionality for
+writing OFX data to a file.</p>
+
+<p>Use the wrapper in the following way:</p>
+
+<p>(ns mypackage.core
+  (require '[ofx-clj.core :as ofx]))</p>
+
+<p>; get the entire OFX file as a map
+(def data (ofx/parse "/path/to/data.ofx"))</p>
+
+<p>; get all the banking messages from the map
+(ofx/find-all-transactions data "banking")</p>
+
+<p>Two sample OFX files are included in the "resources" directory.</p>
+
+<h2>License</h2>
+
+<p>Copyright (C) 2012 Himanshu Rathod</p>
+
+<p>Distributed under the Eclipse Public License, the same as Clojure.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ofx-clj maintained by <a href="https://github.com/hrathod">hrathod</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
