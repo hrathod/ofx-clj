@@ -1,6 +1,6 @@
 (ns ofx-clj.core
   (:require [clojure.java.io :as io])
-  (:import [java.io FileInputStream]
+  (:import [java.io FileInputStream StringReader]
           [java.util Date]
           [net.sf.ofx4j.io AggregateUnmarshaller]
           [net.sf.ofx4j.domain.data MessageSetType ResponseEnvelope ResponseMessageSet]
@@ -42,7 +42,7 @@
 (defn- read-file
   "Read an OFX file using the OFX4J library."
   [ofx-file]
-  (with-open [data (io/input-stream ofx-file)]
+  (with-open [data (io/reader ofx-file)]
     (.unmarshal (AggregateUnmarshaller. ResponseEnvelope) data)))
 
 (defn- parse-amount
@@ -237,5 +237,10 @@
 
 (defn parse
   "Parse the given OFX file using the OFX4J parser."
-  [file]
-  (map parse-data (.getMessageSets (read-file file))))
+  [source]
+  (map parse-data (.getMessageSets (read-file source))))
+
+(defn parse-string
+  [str]
+  (with-open [source (StringReader. str)]
+    (parse source)))
