@@ -1,5 +1,6 @@
 (ns ofx-clj.core
-  (import [java.io FileInputStream]
+  (:require [clojure.java.io :as io])
+  (:import [java.io FileInputStream]
           [java.util Date]
           [net.sf.ofx4j.io AggregateUnmarshaller]
           [net.sf.ofx4j.domain.data MessageSetType ResponseEnvelope ResponseMessageSet]
@@ -41,9 +42,8 @@
 (defn- read-file
   "Read an OFX file using the OFX4J library."
   [ofx-file]
-  (.unmarshal
-    (AggregateUnmarshaller. ResponseEnvelope)
-    (FileInputStream. ofx-file)))
+  (with-open [data (io/input-stream ofx-file)]
+    (.unmarshal (AggregateUnmarshaller. ResponseEnvelope) data)))
 
 (defn- parse-amount
   "Parse the given string into a BigDecimal.
