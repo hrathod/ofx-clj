@@ -202,26 +202,26 @@
 (defmethod parse-data CreditCardResponseMessageSet
   [message-set]
   (obj-to-map message-set
-                  :type [.getType str]
-                  :version .getVersion
-                  :mesages [.getResponseMessages #(map parse-data %)]))
+              :type [.getType str]
+              :version .getVersion
+              :mesages [.getResponseMessages #(map parse-data %)]))
 
 (defmethod parse-data CreditCardStatementResponseTransaction
   [transaction]
   (obj-to-map transaction
-                  :message [.getMessage parse-data]
-                  :wrapped-message [.getWrappedMessage parse-data]))
+              :message [.getMessage parse-data]
+              :wrapped-message [.getWrappedMessage parse-data]))
 
 (defmethod parse-data CreditCardStatementResponse
   [response]
   (obj-to-map response
-                  :account [.getAccount parse-data]
-                  :available-balance [.getAvailableBalance parse-data]
-                  :currency-code .getCurrencyCode
-                  :ledger-balance [.getLedgerBalance parse-data]
-                  :marketing-info .getMarketingInfo
-                  :response-message-name .getResponseMessageName
-                  :transaction-list [.getTransactionList parse-data]))
+              :account [.getAccount parse-data]
+              :available-balance [.getAvailableBalance parse-data]
+              :currency-code .getCurrencyCode
+              :ledger-balance [.getLedgerBalance parse-data]
+              :marketing-info .getMarketingInfo
+              :response-message-name .getResponseMessageName
+              :transaction-list [.getTransactionList parse-data]))
 
 (defmethod parse-data :default
   [data]
