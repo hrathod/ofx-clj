@@ -204,7 +204,7 @@
   (obj-to-map message-set
               :type [.getType str]
               :version .getVersion
-              :mesages [.getResponseMessages #(map parse-data %)]))
+              :messages [.getResponseMessages #(map parse-data %)]))
 
 (defmethod parse-data CreditCardStatementResponseTransaction
   [transaction]
