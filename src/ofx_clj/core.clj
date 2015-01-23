@@ -42,7 +42,8 @@
                      [key (list value lobj)]))))))
 
 (defn- read-file
-  "Read an OFX file using the OFX4J library."
+  "Read an OFX file using the OFX4J library.  Argument can be 
+   anything that can be turned into a reader."
   [ofx-file]
   (with-open [data (io/reader ofx-file)]
     (.unmarshal (AggregateUnmarshaller. ResponseEnvelope) data)))
